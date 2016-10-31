@@ -1,0 +1,280 @@
+<!-- Form used to add new entries of project in database -->
+<form class="form-horizontal alert alert-warning" name="projList" id="projForm"
+ng-submit="insertInfo(projInfo);" hidden="">
+  <h3 class="text-center">Add Project Pipeline Details</h3>
+  </br>
+  </br>
+  <div >
+    <input type="hidden" class="form-group" name="userinfo"  ng-model="projInfo.userinfo" ng-init="projInfo.userinfo=userInfo.profile.name"/>
+  </div>
+  <table style="font-family:Verdana; font-size: 14px; color: #FFFFFF;">
+    <tr style="width:100%">
+      <td style="width:50%; padding-right:25%">
+      
+      <!-- For RU -->
+      
+        <div class="form-group" >
+          <label for="ProjectRU">Select RU</label>
+          <Select name="proj_ru" class="form-control" placeholder="Enter Project RU Name"
+          ng-model="projInfo.ru" value="" autofocus="" required="">
+            <option value="" disabled="disabled" selected="selected">Select Regional Unit</option>
+            <option value="APAC">APAC</option>
+            <option value="AuriQ">AuriQ</option>
+            <option value="EU">EU</option>
+            <option value="Prognos">Prognos</option>
+            <option value="US">US</option>
+          </Select>
+        </div>
+        <div class="form-group">
+          <p class="text-danger"
+          ng-show="projList.proj_ru.$invalid &amp;&amp; projList.proj_ru.$dirty">RU Not
+          Selected!</p>
+        </div>
+      </td>
+      <td style="width:40%">
+      
+       <!-- For Solution -->
+      
+        <div class="form-group" >
+          <label for="solu">Select Practice Area</label>
+          <Select name="solu" class="form-control" placeholder="Select Practice"
+          ng-model="projInfo.solu" autofocus="" required="">
+            <option value="" disabled="disabled" selected="selected">Select Practice</option>
+            <option value="Data Engineering">Data Engineering</option>
+            <option value="Demand And Supply">Demand And Supply</option>
+            <option value="Reporting And Visualization">Reporting And Visualization</option>
+            <option value="Risk And Fraud">Risk And Fraud</option>
+            <option value="Sales And Marketing">Sales And Marketing</option>
+          </Select>
+        </div>
+        <div class="form-group">
+          <p class="text-danger"
+          ng-show="projList.proj_solu.$invalid &amp;&amp; projList.proj_solu.$dirty">Solution Not
+          Selected!</p>
+        </div>
+      </td>
+    </tr>
+  </table>
+  
+  <!-- For Company Name -->
+  
+  <div class="form-group" style="width:30%">
+    <label for="Company">Enter Client Name</label>
+    <input type="text" name="proj_comp" class="form-control" placeholder="Enter Client Name"
+    ng-model="projInfo.comp" autofocus="" required="" />
+  </div>
+  <div class="form-group">
+    <p class="text-danger"
+    ng-show="projList.proj_comp.$invalid &amp;&amp; projList.proj_comp.$dirty">Enter Client
+    Name!</p>
+  </div>
+  
+  <!-- For Project Description -->
+  
+  <div class="form-group" style="width:35%">
+    <label for="comments">Enter Project Description</label>
+    <input type="text" name="proj_comm" class="form-control"
+    placeholder="Enter Project Description" ng-model="projInfo.comm" autofocus="" required="" />
+  </div>
+  <div class="form-group">
+    <p class="text-danger"
+    ng-show="projList.proj_comm.$invalid &amp;&amp; projList.proj_comm.$dirty">Enter Project Description!</p>
+  </div>
+  <table style= "font-family: Verdana; font-size: 14px; color: #FFFFFF;">
+      
+    
+  <tr style="width:100%">
+  <!-- For Deal Size -->
+      <td style="width:55%; padding-right:20%">
+        <div class="form-group">
+          <label for="dealsize">Total Deal Size(in $000)</label>
+          <input type="text" name="proj_deal" class="form-control" placeholder="Enter Deal Size" ng-model="projInfo.deal" autofocus="" required="" />
+        </div>
+      </td>
+  
+      <!-- For Deal Status  -->
+  
+       <td style="width:40%">
+        <div class="form-group">
+          <label for="status">Select Deal Stage</label>
+          <Select id="status" name="status" class="form-control" placeholder="Select Deal Stage"
+          ng-model="projInfo.status" autofocus="" required="">
+            <option value="" disabled="disabled" selected="selected">Select Deal Status</option>
+            <option value="Active Discussion">Active Discussion - 0%</option>
+            <option value="Proposal Submitted">Proposal Submitted - 25%</option>
+            <option value="Verbal Committment">Verbal Committment - 50%</option>
+            <option value="Contracting">Contracting - 75%</option>
+            <option value="Contract Signed">Contract Signed - 100%</option>
+          </Select>
+        </div>
+      </td>
+    </tr>
+  </table>
+  
+  <!-- For Deal Status at 50% -->
+  </br>
+  </br>
+  
+  <div id="otherType" style="display:none;">
+    <table style="Verdana; font-size: 14px; color:#FFFFFF;">
+  
+      <!-- Detail For Q2 -->
+      <tr style="width: 100%";>
+  
+        <!-- Detail For Jul-Sep FYE-17 -->
+  
+        <td style="width: 33%; padding-right: 10%">
+          <div class="form-group">
+            <label for="q2fy16">Q2-FY17 Deal Size</label>
+            <input type="text" name="proj_q2fy16" class="form-control"
+            ng-model="projInfo.q2fy16" />
+          </div>
+        </td>
+  
+        <!-- Status For Jul-Sep FYE-17 -->
+  
+        <td style="width: 40%; padding-right: 10%">
+          <div class="form-group">
+            <label for="statusq2fy16">Q2-FY17 Deal Stage</label>
+            <Select id="statusq2fy16" name="statusq2fy16" class="form-control"
+            placeholder="Select Stage" ng-model="projInfo.statusq2fy16" >
+              <option value="" disabled="disabled" selected="selected">Select Stage</option>
+              <option value="0">Active Discussion - 0%</option>
+              <option value="25">Proposal Submitted - 25%</option>
+              <option value="50">Verbal Committment - 50%</option>
+              <option value="75">Contracting - 75%</option>
+              <option value="100">Contract Signed - 100%</option>
+            </Select>
+          </div>
+        </td>
+  
+        <!-- Contribution For Jul-Sep FYE-17 -->
+  
+        <td style="width: 45%">
+          <div class="form-group">
+            <label for="contributionq2fy16">Q2-FY17 CM</label>
+            <input type="text" name="proj_contributionq2fy16" class="form-control" ng-model="projInfo.contributionq2fy16" />
+          </div>
+        </td>
+      </tr>
+  
+      <!-- Detail For Q3 FYE17 -->
+  
+      <tr style="width:100%">
+        <td style="width: 33%; padding-right: 10%">
+          <div class="form-group">
+            <label for="q3fy16">Q3-FY17 Deal Size</label>
+            <input type="text" name="proj_q3fy16" class="form-control"
+            ng-model="projInfo.q3fy16" />
+          </div>
+        </td>
+  
+        <!-- Status For Oct-Dec FYE-17 -->
+  
+        <td style="width: 40%; padding-right: 10%">
+          <div class="form-group">
+            <label for="statusq3fy16">Q3-FY17 Deal Stage</label>
+            <Select id="statusq3fy16" name="statusq3fy16" class="form-control"
+            placeholder="Select Stage" ng-model="projInfo.statusq3fy16" >
+              <option value="" disabled="disabled" selected="selected">Select Stage</option>
+              <option value="0">Active Discussion - 0%</option>
+              <option value="25">Proposal Submitted - 25%</option>
+              <option value="50">Verbal Committment - 50%</option>
+              <option value="75">Contracting - 75%</option>
+              <option value="100">Contract Signed - 100%</option>
+            </Select>
+          </div>
+        </td>
+  
+        <!-- Contribution For Oct-Dec FYE-17 -->
+  
+        <td style="width: 45%">
+          <div class="form-group">
+            <label for="contributionq3fy16">Q3-FY17 CM</label>
+            <input type="text" name="proj_contributionq3fy16" class="form-control"
+            ng-model="projInfo.contributionq3fy16" />
+          </div>
+        </td>
+      </tr>
+  
+      <!-- Detail For Q4 FYE17 -->
+        <tr style= "width:100%">
+      <td style="width: 33%; padding-right: 10%">
+          <div class="form-group">
+             <label for="q4fy16">Q4-FY17 Deal Size</label>
+            <input type="text" name="proj_q4fy16" class="form-control"
+            ng-model="projInfo.q4fy16" />
+          </div>
+        </td>
+  
+        <!-- Status For Jan-Mar FYE-17 -->
+  
+        <td style="width: 40%; padding-right: 10%">
+          <div class="form-group">
+            <label for="statusq4fy16">Q4-FY17 Deal Stage</label>
+            <Select id="statusq4fy16" name="statusq4fy16" class="form-control"
+            placeholder="Select Deal Stage" ng-model="projInfo.statusq4fy16">
+              <option value="" disabled="disabled" selected="selected">Select Stage</option>
+              <option value="0">Active Discussion - 0%</option>
+              <option value="25">Proposal Submitted - 25%</option>
+              <option value="50">Verbal Committment - 50%</option>
+              <option value="75">Contracting - 75%</option>
+              <option value="100">Contract Signed - 100%</option>
+            </Select>
+          </div>
+        </td>
+        
+        <!-- Contribution For Jan-Mar FYE-17 -->
+        
+        <td style="width: 45%">
+          <div class="form-group">
+            <label for="contributionq4fy16">Q4-FY17 CM</label>
+            <input type="text" name="proj_contributionq4fy16" class="form-control" ng-model="projInfo.contributionq4fy16" />
+          </div>
+        </td>
+      </tr>
+      
+      <!-- Detail For Q1 FYE18 -->
+      
+      <tr style="width:100%">
+        <td style="width: 33%; padding-right: 10%">
+          <div class="form-group">
+            <label for="q1fy17">Q1-FY18 Deal Size</label>
+            <input type="text" name="proj_q1fy17" class="form-control" ng-model="projInfo.q1fy17" />
+          </div>
+        </td>
+      
+        <!-- Status For Apr-Jun FYE-18 -->
+      
+        <td style="width: 40%; padding-right: 10%">
+          <div class="form-group">
+            <label for="statusq1fy17">Q1-FY18 Deal Stage</label>
+            <Select id="statusq1fy17" name="statusq1fy17" class="form-control" placeholder="Select Stage" ng-model="projInfo.statusq1fy17">
+              <option value="" disabled="disabled" selected="selected">Select Stage</option>
+              <option value="0">Active Discussion - 0%</option>
+              <option value="25">Proposal Submitted - 25%</option>
+              <option value="50">Verbal Committment - 50%</option>
+              <option value="75">Contracting - 75%</option>
+              <option value="100">Contract Signed - 100%</option>
+            </Select>
+          </div>
+        </td>
+      
+        <!-- Contribution For Apr-Jun FYE-18 -->
+      
+        <td style="width: 45%">
+          <div class="form-group">
+            <label for="contributionq1fy17">Q1-FY18 CM</label>
+            <input type="text" name="proj_contributionq1fy17" class="form-control" ng-model="projInfo.contributionq1fy17" />
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-warning">Add</button>
+  </div>
+  <script>$('#status').on('change',function(){ if( $(this).val()==="Verbal Committment" ||
+  $(this).val()==="Contracting" || $(this).val()==="Contract Signed"){ $("#otherType").show() }
+  else { $("#otherType").hide() } });</script>
+</form>

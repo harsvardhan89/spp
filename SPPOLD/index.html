@@ -1,0 +1,104 @@
+<html ng-app="crudApp">
+
+<head>
+    <title>Sales Pipeline Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="icon" href="http://www.antuit.com/wp-content/themes/antuit/favicon.ico" type="image/x-icon">
+    <!-- Include main CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Include jQuery library -->
+    <script src="js/jQuery/jquery.min.js"></script>
+    <!-- Include AngularJS library -->
+    <script src="lib/angular/angular.min.js"></script>
+    <!-- Include Bootstrap Javascript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!--Include ADAL libraries-->
+    <script src="lib/adal.min.js"></script>
+    <script src="lib/adal-angular.min.js"></script>
+</head>
+
+<body>
+    <div class="container wrapper" ng-controller="DbController">
+        <h1 class="text-right" style=" background-color: #38373c; color: white;"><img src="images/antuit.png" style="Padding-right:70%; width:78%; height:auto; vertical-align: baseline;" />Sales
+            Pipeline Portal</h1>
+        <div data-ng-model="userInfo" style="font-family: Verdana">
+            <span data-ng-hide="!userInfo.isAuthenticated" style="font-family:Verdana; font-size:1em; font-style:italic;">Welcome {{userInfo.profile.name}}</span>
+            <button data-ng-hide="!userInfo.isAuthenticated" data-ng-click="logout()" class="btn btn-danger" role="button" style="Margin-left:75%" >Logout</button>
+            <button data-ng-hide="userInfo.isAuthenticated" data-ng-click="login()" class="btn btn-info" role="button" style="margin-left:45%"><b>Login</b></button>
+        </div>
+        </br>
+       <div data-ng-show="userInfo.isAuthenticated">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <div class="alert alert-default navbar-brand search-box">
+                    <button class="btn btn-primary" ng-show="show_form" ng-click="formToggle()">Add Project <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                </div>
+                <div class="alert alert-default input-group search-box">
+                    <span class="input-group-btn">
+                        <input type="text" class="form-control" placeholder="Search Projects" ng-model="search_query" />
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <div class="col-md-6 col-md-offset-3">
+
+            <!-- Include form template which is used to insert data into database -->
+            <div ng-include src="'templates/form.html'"></div>
+
+            <!-- Include form template which is used to edit and update data into database -->
+            <div ng-include src="'templates/editForm.html'"></div>
+        </div>
+        <div class="clearfix"></div>
+
+        <!-- Table to show employee detalis -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr style="background-color: #38373c; color: #FFFFFF;">
+                    <th>Project ID</th>
+                    <th>RU</th>
+                    <th>Practice</th>
+                    <th>Client</th>
+                    <th>Project Description</th>
+                    <th>Deal Status</th>
+                    <th>Total Deal Size(in $000USD)</th>
+                    <th>Q2-FY17 Deal Size - Stage</th>
+                    <th>Q3-FY17 Deal Size - Stage</th>
+                    <th>Q4-FY17 Deal Size - Stage</th>
+                    <th>Q1-FY18 Deal Size - Stage</th>
+                    <th>Date Of Submission</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="detail in details| filter:search_query">
+                    <td style="text-align: center;">
+                        <span>{{detail.proj_id}}</span></td>
+                    <td>{{detail.proj_ru}}</td>
+                    <td>{{detail.proj_solu}}</td>
+                    <td>{{detail.proj_comp}}</td>
+                    <td>{{detail.proj_comm}}</td>
+                    <td>{{detail.proj_status}}</td>
+                    <td style="text-align: center;">{{detail.proj_deal}}</td>
+                    <td style="text-align: center;">{{detail.proj_q2fy16}}-{{detail.proj_statusq2fy16}}%</td>
+                    <td style="text-align: center;">{{detail.proj_q3fy16}}-{{detail.proj_statusq3fy16}}%</td>
+                    <td style="text-align: center;">{{detail.proj_q4fy16}}-{{detail.proj_statusq4fy16}}%</td>
+                    <td style="text-align: center;">{{detail.proj_q1fy17}}-{{detail.proj_statusq1fy17}}%</td>
+                    <td>{{detail.curr_date}}-{{detail.user_info}}</td>
+                    <td>
+                        <button class="btn btn-warning" ng-click="editInfo(detail)" title="Edit"><span class="glyphicon glyphicon-edit"></span></button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="deleteInfo(detail)" title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+    <!-- Include controller -->
+    <script src="js/angular-script.js"></script>
+</body>
+
+</html>

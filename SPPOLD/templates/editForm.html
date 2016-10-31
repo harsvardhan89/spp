@@ -1,0 +1,231 @@
+<!-- Form used for updation of data into database -->
+<form class="form-horizontal alert alert-warning" id="editForm" ng-submit="UpdateInfo(currentUser)" hidden>
+<h3 class="text-center">Update Project Pipeline Details</h3>
+</br>
+</br>
+ <div >
+    <input type="hidden"  name="userinfo"  ng-model="userInfo.profile.name"/>
+  </div>
+
+<table style="font-family:Verdana; font-size: 14px; color: #FFFFFF;">
+    <tr style="width:100%">
+      <td style="width:50%; padding-right:25%">
+      
+      <!-- For RU -->
+      
+        <div class="form-group" >
+	      	<label for="ProjectRU">Select RU:</label>
+		       <Select name="RU" class="form-control" ng-model="currentUser.proj_ru" value="{{currentUser.proj_ru}}">
+		        <option value="APAC">APAC</option>
+            <option value="AuriQ">AuriQ</option>
+            <option value="EU">EU</option>
+            <option value="Prognos">Prognos</option>
+            <option value="US">US</option>
+          </Select>
+	  </div>  
+  </td>
+ <td style="width:40%">
+      
+       <!-- For Solution -->
+      
+        <div class="form-group" >
+		  <label for="ProjectSolution">Select Practice Area:</label>
+	      <Select name="Solution" class="form-control" ng-model="currentUser.proj_solu" value="{{currentUser.proj_solu}}">
+		      <option value="Data Engineering">Data Engineering</option>
+          <option value="Demand And Supply">Demand And Supply</option>
+          <option value="Reporting And Visualization">Reporting And Visualization</option>
+          <option value="Risk And Fraud">Risk And Fraud</option>
+          <option value="Sales And Marketing">Sales And Marketing</option>
+        </Select>
+   </div>
+  </td>
+ </tr>  
+</table>
+	
+  	<div class="form-group" style="width:30%">
+		<label for="Gender">Client Name:</label>
+				<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_comp" value="{{currentUser.proj_comp}}">
+		</div>
+    
+   <div class="form-group" style="width:30%">
+		<label for="comments">Project Description:</label>
+			<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_comm" value="{{currentUser.proj_comm}}">
+	</div>
+ 
+ 
+ <table style="font-family: Verdana;font-size: 14px; color: #FFF;">
+  <tr style="width:100%">
+  <!-- For Deal Size -->
+      <td style="width:55%; padding-right:20%">
+        <div class="form-group"> 
+		   <label for="Deal">Deal Size(in $000USD):</label>
+					<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_deal" value="{{currentUser.proj_deal}}">
+	  </div>
+  </td>
+	<td style="width:40%">
+        <div class="form-group">
+		      <label for="status">Select Deal Status </label>
+         <Select name="status" name="status" class="form-control" ng-model="currentUser.proj_status" value="{{currentUser.proj_status}}" >
+          <option value="" disabled selected>Select Status</option>
+          <option value="Active Discussion">Active Discussion - 0%</option>
+          <option value="Proposal Submitted">Proposal Submitted - 25%</option>
+          <option value="Verbal Committment">Verbal Committment - 50%</option>
+          <option value="Contracting">Contracting - 75%</option>
+          <option value="Contract Signed">Contract Signed - 100%</option>
+         </Select>
+   </div>
+  </td>
+ </tr>
+ </Table>
+ </br>
+ </br>
+   
+     <table style="font-family: Verdana; font-size: 14px; color: #FFF;">
+     <!-- Detail For Q2 -->
+      <tr style="width: 100%";>
+  
+        <!-- Detail For Jul-Sep FYE-17 -->
+  
+        <td style="width: 33%; padding-right: 10%">
+          <div class="form-group">
+		<label for="q2fy16">Q2-FY17 Deal Size</label>
+				<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_q2fy16" value="{{currentUser.proj_q2fy16}}">
+		</div>
+    </td>
+    <!-- Status For Jul-Sep FYE-17 -->
+  
+        <td style="width: 40%; padding-right: 10%">
+          <div class="form-group">
+		<label for="statusq2fy16">Q2-FY17 Deal Stage</label>
+         <Select name="status" name="status" class="form-control" ng-model="currentUser.proj_statusq2fy16" value="{{currentUser.proj_statusq2fy16}}" >
+          <option value="" disabled selected>Select Status</option>
+          <option value="0">Active Discussion - 0%</option>
+          <option value="25">Proposal Submitted - 25%</option>
+          <option value="50">Verbal Committment - 50%</option>
+          <option value="75">Contracting - 75%</option>
+          <option value="100">Contract Signed - 100%</option>
+         </Select>
+   </div>
+    </td>
+     <!-- Contribution For Jul-Sep FYE-17 -->
+
+        <td style="width: 50%">
+          <div class="form-group">
+		<label for="contributionq2fy16">Q2-FY17 CM</label>
+				<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_contributionq2fy16" value="{{currentUser.proj_contributionq2fy16}}">
+		</div>
+    
+    </td>
+    </tr>
+      <!-- Detail For Q3 FYE17 -->
+  
+      <tr style="width:100%">
+        <td style="width: 33%; padding-right: 10%">
+          <div class="form-group">
+		        <label for="Gender">Q3-FY17 Deal Size</label>
+				      <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_q3fy16" value="{{currentUser.proj_q3fy16}}">
+		      </div>
+       </td>
+     <!-- Status For Oct-Dec FYE-17 -->
+  
+        <td style="width: 40%; padding-right: 10%">
+          <div class="form-group">
+		<label for="statusq3fy16">Q3-FY17 Deal Stage</label>
+         <Select name="statusq3fy16" name="statusq3fy16" class="form-control" ng-model="currentUser.proj_statusq3fy16" value="{{currentUser.proj_statusq3fy16}}" >
+          <option value="" disabled selected>Select Status</option>
+          <option value="0">Active Discussion - 0%</option>
+          <option value="25">Proposal Submitted - 25%</option>
+          <option value="50">Verbal Committment - 50%</option>
+          <option value="75">Contracting - 75%</option>
+          <option value="100">Contract Signed - 100%</option>
+         </Select>
+   </div>
+    </td>
+     <!-- Contribution For Oct-Dec FYE-17 -->
+
+        <td style="width: 45%">
+          <div class="form-group">
+		<label for="contributionq3fy16">Q3-FY17 CM</label>
+				<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_contributionq3fy16" value="{{currentUser.proj_contributionq3fy16}}">
+		</div>
+    
+    </td>
+    </tr>
+    <!-- Detail For Q4 FYE17 -->
+        <tr style= "width:100%">
+      <td style="width: 33%; padding-right: 10%">
+          <div class="form-group">
+		<label for="proj_q4fy16">Q4-FY17 Deal Size</label>
+				<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_q4fy16" value="{{currentUser.proj_q4fy16}}">
+		</div>
+     </td>
+      <!-- Status For Jan-Mar FYE-17 -->
+  
+        <td style="width: 40%; padding-right: 10%">
+          <div class="form-group">
+		<label for="statusq4fy16">Q4-FY17 Deal Stage</label>
+         <Select name="statusq4fy16" name="statusq4fy16" class="form-control" ng-model="currentUser.proj_statusq4fy16" value="{{currentUser.proj_statusq4fy16}}" >
+          <option value="" disabled selected>Select Status</option>
+          <option value="0">Active Discussion - 0%</option>
+          <option value="25">Proposal Submitted - 25%</option>
+          <option value="50">Verbal Committment - 50%</option>
+          <option value="75">Contracting - 75%</option>
+          <option value="100">Contract Signed - 100%</option>
+         </Select>
+   </div>
+    </td>
+     <!-- Contribution For Jan-Mar FYE-17 -->
+
+        <td style="width: 45%">
+          <div class="form-group">
+		       <label for="contributionq4fy16">Q4-FY17 CM</label>
+				    <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_contributionq4fy16" value="{{currentUser.proj_contributionq4fy16}}">
+		     </div>
+    
+    </td>
+    </tr>
+    
+    <!-- Detail For Q1 FYE18 -->
+      
+      <tr style="width:100%">
+        <td style="width: 33%; padding-right: 10%">
+          <div class="form-group">
+		<label for="proj_q1fy17">Q1-FY18 Deal Size</label>
+				<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_q1fy17" value="{{currentUser.proj_q1fy17}}">
+		</div>
+    </td>
+    <!-- Status For Apr-Jun FYE-18 -->
+      
+        <td style="width: 40%; padding-right: 10%">
+          <div class="form-group">
+		<label for="statusq1fy17">Q1-FY18 Deal Stage</label>
+         <Select name="statusq1fy17" name="statusq1fy17" class="form-control" ng-model="currentUser.proj_statusq1fy17" value="{{currentUser.proj_statusq1fy17}}" >
+          <option value="" disabled selected>Select Status</option>
+          <option value="0">Active Discussion - 0%</option>
+          <option value="25">Proposal Submitted - 25%</option>
+          <option value="50">Verbal Committment - 50%</option>
+          <option value="75">Contracting - 75%</option>
+          <option value="100">Contract Signed - 100%</option>
+         </Select>
+   </div>
+    </td>
+     <!-- Contribution For Apr-Jun FYE-18 -->
+
+
+
+      
+        <td style="width: 45%">
+          <div class="form-group">
+		<label for="contributionq1fy17">Q1-FY18 CM</label>
+				<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="currentUser.proj_contributionq1fy17" value="{{currentUser.proj_contributionq1fy17}}">
+		</div>
+    
+    </td>
+    </tr>
+    </table>
+    
+	<div class="form-group">
+		<button class="btn btn-warning" ng-disabled="projList.$invalid" ng-click="updateMsg(currentUser.proj_id)">Update</button>
+	</div>
+</form>
+
